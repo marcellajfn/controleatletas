@@ -3,7 +3,7 @@ package controleatleta;
 public class ControleAtleta {
 
     public static void main(String[] args) {
-        CadastroBoxeador cadastro = new CadastroBoxeador();
+        CadastroArqueiro cadastro = new CadastroArqueiro();
         cadastro.setVisible(true);
     }
 }
