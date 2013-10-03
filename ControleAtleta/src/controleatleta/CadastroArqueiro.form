@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -29,6 +29,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -50,7 +51,7 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelListaBoxeadores" min="-2" max="-2" attributes="1"/>
+                          <Component id="jLabelListaArqueiros" min="-2" max="-2" attributes="1"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButtonNovo" linkSize="1" max="32767" attributes="1"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -67,7 +68,7 @@
                       <Component id="jButtonCancelar" linkSize="1" min="-2" pref="86" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane4" alignment="0" max="32767" attributes="1"/>
-                  <Component id="jTabbedPane1" alignment="0" pref="761" max="32767" attributes="1"/>
+                  <Component id="jTabbedPane1" alignment="0" max="32767" attributes="1"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -86,7 +87,7 @@
                   <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabelListaBoxeadores" min="-2" max="-2" attributes="0"/>
+              <Component id="jLabelListaArqueiros" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane4" min="-2" pref="124" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -123,15 +124,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabelTelefones" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                          <Component id="jLabelCpf" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                          <Component id="jLabelRg" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                          <Component id="jLabelNomePai" linkSize="2" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
-                          <Component id="jLabelNomeMae" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                          <Component id="jLabelNome" max="32767" attributes="1"/>
-                          <Component id="jLabelDataNascimento" alignment="0" max="32767" attributes="1"/>
-                          <Component id="jLabelSexo" linkSize="2" alignment="0" max="32767" attributes="1"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabelTelefones" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="jLabelCpf" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="jLabelRg" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="jLabelNomePai" linkSize="2" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="jLabelNomeMae" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                              <Component id="jLabelNome" max="32767" attributes="1"/>
+                              <Component id="jLabelDataNascimento" alignment="0" max="32767" attributes="1"/>
+                              <Component id="jLabelSexo" linkSize="2" alignment="0" max="32767" attributes="1"/>
+                          </Group>
+                          <Component id="jLabelIdade" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -148,8 +152,16 @@
                               <Component id="jTextFieldPeso" min="-2" pref="56" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jScrollPane1" pref="512" max="32767" attributes="1"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jScrollPane1" pref="538" max="32767" attributes="1"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jTextIdade" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="432" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButtonAdicionarTelefone" min="-2" pref="60" max="-2" attributes="0"/>
                                   <Component id="jButtonRemoverTelefone" min="-2" pref="60" max="-2" attributes="0"/>
@@ -217,17 +229,25 @@
                           <Component id="jLabelCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldCpf" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="6" pref="6" max="6" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelTelefones" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jButtonAdicionarTelefone" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonRemoverTelefone" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="6" pref="6" max="6" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jButtonAdicionarTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextIdade" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="jScrollPane1" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabelIdade" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButtonRemoverTelefone" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="jLabelTelefones" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -350,6 +370,16 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldCpf">
             </Component>
+            <Component class="javax.swing.JTextField" name="jTextIdade">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextIdadeActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelIdade">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Idade:"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel2">
@@ -367,7 +397,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelComplemento" alignment="0" max="32767" attributes="1"/>
+                          <Component id="jLabelComplemento" alignment="0" pref="117" max="32767" attributes="1"/>
                           <Component id="jLabelPais" alignment="0" pref="95" max="32767" attributes="0"/>
                           <Component id="jLabelCidade" alignment="0" pref="95" max="32767" attributes="0"/>
                           <Component id="jLabelBairro" alignment="0" pref="95" max="32767" attributes="0"/>
@@ -380,7 +410,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTextFieldCidade" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                           <Component id="jTextFieldBairro" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                          <Component id="jTextFieldComplemento" alignment="0" pref="619" max="32767" attributes="0"/>
+                          <Component id="jTextFieldComplemento" alignment="0" pref="631" max="32767" attributes="0"/>
                           <Component id="jTextFieldNumero" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="jTextFieldLogradouro" alignment="0" pref="619" max="32767" attributes="1"/>
                           <Component id="jComboBoxEstado" min="-2" max="-2" attributes="0"/>
@@ -553,29 +583,29 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelEnvergadura" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelDistancia" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelModalidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelCategoriaPeso" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelEstilo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTotalLutas" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAlvo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelTipoDeArco" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelTamanhoDoArco" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelTipoDeFlecha" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelTotalVitorias" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTotalVitoriasNocaute" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTotalEmpates" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTotalDerrotas" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelAcertosNaMosca" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelTotalDeMedalhas" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelTotalDesistencias" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldTotalDesistencias" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jTextFieldTotalDerrotas" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jTextFieldTotalEmpates" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jTextFieldTotalNocaute" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jTextFieldTotalVitorias" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jTextFieldTotalLutas" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jTextFieldEnvergadura" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jComboBoxEstilo" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jTextFieldCategoriaPeso" alignment="0" pref="205" max="32767" attributes="1"/>
-                          <Component id="jComboBoxCategoria" alignment="0" pref="205" max="32767" attributes="1"/>
+                          <Component id="jTextFieldTotalDesistencias" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jTextFieldTotalDeMedalhas" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jTextFieldAcertosNaMosca" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jTextFieldTotalDeVitorias" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jTextFieldTipoDeFlecha" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jTextFieldTamanhoDoArco" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jTextFieldDistancia" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jComboTipoDeArco" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jTextFieldAlvo" alignment="0" pref="243" max="32767" attributes="1"/>
+                          <Component id="jComboModalidade" alignment="0" pref="243" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -600,49 +630,49 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBoxCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboModalidade" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelModalidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelPremiacoes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelPremiacoes" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelCategoriaPeso" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldCategoriaPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelAlvo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldAlvo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBoxEstilo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelEstilo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jComboTipoDeArco" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelTipoDeArco" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelEnvergadura" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldEnvergadura" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelDistancia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDistancia" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelTotalLutas" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTotalLutas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelTamanhoDoArco" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTamanhoDoArco" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabelTipoDeFlecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTipoDeFlecha" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabelTotalVitorias" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTotalVitorias" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTotalDeVitorias" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelTotalVitoriasNocaute" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTotalNocaute" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelAcertosNaMosca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldAcertosNaMosca" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelTotalEmpates" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTotalEmpates" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelTotalDerrotas" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldTotalDerrotas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelTotalDeMedalhas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTotalDeMedalhas" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -673,7 +703,7 @@
                 <Property name="text" type="java.lang.String" value="Modalidade:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxCategoria">
+            <Component class="javax.swing.JComboBox" name="jComboModalidade">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -683,20 +713,20 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxCategoriaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboModalidadeActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelCategoriaPeso">
+            <Component class="javax.swing.JLabel" name="jLabelAlvo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Categoria (Peso):"/>
+                <Property name="text" type="java.lang.String" value="Alvo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelEstilo">
+            <Component class="javax.swing.JLabel" name="jLabelTipoDeArco">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Estilo:"/>
+                <Property name="text" type="java.lang.String" value="Tipo de Arco:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBoxEstilo">
+            <Component class="javax.swing.JComboBox" name="jComboTipoDeArco">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -705,48 +735,51 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboTipoDeArcoActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldEnvergadura">
+            <Component class="javax.swing.JTextField" name="jTextFieldDistancia">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelEnvergadura">
+            <Component class="javax.swing.JLabel" name="jLabelDistancia">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Envergadura:"/>
+                <Property name="text" type="java.lang.String" value="Distancia:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelTotalLutas">
+            <Component class="javax.swing.JLabel" name="jLabelTamanhoDoArco">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Total de Lutas:"/>
+                <Property name="text" type="java.lang.String" value="Tamanho do Arco:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTotalLutas">
+            <Component class="javax.swing.JTextField" name="jTextFieldTamanhoDoArco">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTotalVitorias">
+            <Component class="javax.swing.JTextField" name="jTextFieldTipoDeFlecha">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelTipoDeFlecha">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo de Flecha:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldTotalDeVitorias">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTotalVitorias">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Total de Vit&#xf3;rias:"/>
+                <Property name="text" type="java.lang.String" value="Total de Vitorias:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTotalNocaute">
+            <Component class="javax.swing.JTextField" name="jTextFieldAcertosNaMosca">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelTotalVitoriasNocaute">
+            <Component class="javax.swing.JLabel" name="jLabelAcertosNaMosca">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Total de Vit&#xf3;rias por Nocaute:"/>
+                <Property name="text" type="java.lang.String" value="Total de Acertos na Mosca:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTotalEmpates">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelTotalEmpates">
+            <Component class="javax.swing.JLabel" name="jLabelTotalDeMedalhas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Total de Empates:"/>
+                <Property name="text" type="java.lang.String" value="Total de Medalhas:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabelTotalDerrotas">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Total de Derrotas:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldTotalDerrotas">
+            <Component class="javax.swing.JTextField" name="jTextFieldTotalDeMedalhas">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTotalDesistencias">
               <Properties>
@@ -755,7 +788,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldTotalDesistencias">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldCategoriaPeso">
+            <Component class="javax.swing.JTextField" name="jTextFieldAlvo">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
@@ -841,7 +874,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPesquisarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelListaBoxeadores">
+    <Component class="javax.swing.JLabel" name="jLabelListaArqueiros">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lista de Arqueiros:"/>
       </Properties>
@@ -853,7 +886,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTableListaBoxeadores">
+        <Component class="javax.swing.JTable" name="jTableListaArqueiros">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.table.DefaultTableModel &#xd;&#xa;(&#xd;&#xa;    null,&#xd;&#xa;    new String [] {&#xd;&#xa;        &quot;Nome&quot;, &quot;CPF&quot;&#xd;&#xa;    }&#xd;&#xa;)&#xd;&#xa;{&#xd;&#xa;@Override    &#xd;&#xa;public boolean isCellEditable(int rowIndex, int mColIndex) {&#xd;&#xa;        return false;&#xd;&#xa;    }&#xd;&#xa;}" type="code"/>
@@ -866,7 +899,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableListaBoxeadoresMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableListaArqueirosMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

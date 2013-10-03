@@ -16,14 +16,24 @@ public class CadastroArqueiro extends javax.swing.JFrame {
     private final byte SEXO_FEMININO_INDICE = 1;
     private final char SEXO_MASCULINO_VALOR = 'M';
     private final char SEXO_FEMININO_VALOR = 'F';
-    private final byte CATEGORIA_AMADOR_INDICE = 0;
-    private final byte CATEGORIA_PROFISSIONAL_INDICE = 1;
-    private final char CATEGORIA_AMADOR_VALOR = 'A';
-    private final char CATEGORIA_PROFISSIONAL_VALOR = 'P';
-    private final byte ESTILO_ORTODOXO_INDICE = 0;
-    private final byte ESTILO_SOUTHPAW_INDICE = 1;
-    private final char ESTILO_ORTODOXO_VALOR = 'O';
-    private final char ESTILO_SOUTHPAW_VALOR = 'S';
+    private final byte TIPOARCO_TRADICIONAL_INDICE = 0;
+    private final byte TIPOARCO_RECURVO_INDICE = 1;
+    private final byte TIPOARCO_COMPOSTO_INDICE = 2;
+    private final byte TIPOARCO_TRADICIONAL_VALOR = 'T';
+    private final byte TIPOARCO_RECURVO_VALOR = 'R';
+    private final byte TIPOARCO_COMPOSTO_VALOR = 'C';    
+    private final byte MODALIDADE_OUTDOOR_INDICE = 0;
+    private final byte MODALIDADE_INDOOR_INDICE = 1;
+    private final byte MODALIDADE_FIELD_INDICE = 2;
+    private final byte MODALIDADE_SKIARCHERY_INDICE = 3;
+    private final byte MODALIDADE_CLOUT_INDICE = 4;
+    private final byte MODALIDADE_FLIGHT_INDICE = 5;
+    private final byte MODALIDADE_OUTDOOR_VALOR = 'O';
+    private final byte MODALIDADE_INDOOR_VALOR = 'I';
+    private final byte MODALIDADE_FIELD_VALOR = 'F';
+    private final byte MODALIDADE_SKIARCHERY_VALOR = 'S';
+    private final byte MODALIDADE_CLOUT_VALOR = 'C';
+    private final byte MODALIDADE_FLIGHT_VALOR = 'L';
     private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private ControleArqueiro controleArqueiro;
     private Arqueiro umArqueiro;
@@ -46,34 +56,35 @@ public class CadastroArqueiro extends javax.swing.JFrame {
     private void limparCampos() {
         jTextFieldAltura.setText("0.0");
         jTextFieldBairro.setText(null);
-        jTextFieldCategoriaPeso.setText(null);
+        jTextFieldAlvo.setText(null);
         jTextFieldCep.setText(null);
         jTextFieldCidade.setText(null);
         jTextFieldComplemento.setText(null);
         jTextFieldCpf.setText(null);
         jTextFieldDataNascimento.setText(null);
-        jTextFieldEnvergadura.setText("0.0");
+        jTextFieldDistancia.setText("0.0");
         jComboBoxEstado.setSelectedIndex(0);
         jTextFieldLogradouro.setText(null);
         jTextFieldNome.setText(null);
         jTextFieldNomeMae.setText(null);
         jTextFieldNomePai.setText(null);
+        jTextIdade.setText("0");
         jTextFieldNumero.setText("0");
         jTextFieldPais.setText(null);
         jTextFieldPeso.setText("0.0");
         jTextFieldRg.setText(null);
-        jTextFieldTotalDerrotas.setText("0");
+        jTextFieldTotalDeMedalhas.setText("0");
         jTextFieldTotalDesistencias.setText("0");
-        jTextFieldTotalEmpates.setText("0");
-        jTextFieldTotalLutas.setText("0");
-        jTextFieldTotalNocaute.setText("0");
-        jTextFieldTotalVitorias.setText("0");
+        jTextFieldAcertosNaMosca.setText("0");
+        jTextFieldTamanhoDoArco.setText("0");
+        jTextFieldTipoDeFlecha.setText("0");
+        jTextFieldTipoDeFlecha.setText("0");
         telefonesListModel.clear();
         premiacaoListModel.clear();
         jComboBoxSexo.setSelectedIndex(0);
-        jComboBoxCategoria.setSelectedIndex(0);
-        jComboBoxEstilo.setSelectedIndex(0);
-        this.atualizarCategoriaPeso();
+        jComboModalidade.setSelectedIndex(0);
+        jComboTipoDeArco.setSelectedIndex(0);
+        this.atualizarModalidade();
     }
 
     private void preencherCampos() {
@@ -82,7 +93,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
 
         jTextFieldAltura.setText(Double.toString(umArqueiro.getAltura()));
         jTextFieldBairro.setText(umArqueiro.getEndereco().getBairro());
-        jTextFieldCategoriaPeso.setText(Double.toString(umArqueiro.getPeso()));
+        jTextFieldAlvo.setText(Double.toString(umArqueiro.getPeso()));
         jTextFieldCep.setText(umArqueiro.getEndereco().getCep());
         jTextFieldCidade.setText(umArqueiro.getEndereco().getCidade());
         jTextFieldComplemento.setText(umArqueiro.getEndereco().getComplemento());
@@ -92,7 +103,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         } else {
             jTextFieldDataNascimento.setText(dateFormat.format(umArqueiro.getDataNascimento()));
         }
-        jTextFieldEnvergadura.setText(Double.toString(umArqueiro.getEnvergadura()));
+        jTextFieldDistancia.setText(Double.toString(umArqueiro.getDistancia()));
         jComboBoxEstado.setSelectedItem(umArqueiro.getEndereco().getEstado());
         jTextFieldLogradouro.setText(umArqueiro.getEndereco().getLogradouro());
         jTextFieldNome.setText(umArqueiro.getNome());
@@ -102,12 +113,12 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jTextFieldPais.setText(umArqueiro.getEndereco().getPais());
         jTextFieldPeso.setText(Double.toString(umArqueiro.getPeso()));
         jTextFieldRg.setText(umArqueiro.getRg());
-        jTextFieldTotalDerrotas.setText(Integer.toString(umArqueiro.getTotalDerrotas()));
+        jTextFieldTotalDeMedalhas.setText(Integer.toString(umArqueiro.getTotalMedalhas()));
         jTextFieldTotalDesistencias.setText(Integer.toString(umArqueiro.getTotalDesistencias()));
-        jTextFieldTotalEmpates.setText(Integer.toString(umArqueiro.getTotalEmpates()));
-        jTextFieldTotalLutas.setText(Integer.toString(umArqueiro.getTotalLutas()));
-        jTextFieldTotalNocaute.setText(Integer.toString(umArqueiro.getTotalVitoriasNocaute()));
-        jTextFieldTotalVitorias.setText(Integer.toString(umArqueiro.getTotalVitorias()));
+        jTextFieldAcertosNaMosca.setText(Integer.toString(umArqueiro.getTotalAcertosNaMosca()));
+        jTextFieldTamanhoDoArco.setText(Double.toString(umArqueiro.getTamanhoArco()));
+        jTextFieldTotalDeVitorias.setText(Integer.toString(umArqueiro.getTotalVitorias()));
+        jTextFieldTipoDeFlecha.setText(Integer.toString(umArqueiro.getTotalVitorias()));
 
         telefonesListModel.clear();
         telefones = umArqueiro.getTelefones();
@@ -131,24 +142,39 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         }
 
         switch (umArqueiro.getModalidade()) {
-            case CATEGORIA_AMADOR_VALOR:
-                jComboBoxCategoria.setSelectedIndex(CATEGORIA_AMADOR_INDICE);
+            case MODALIDADE_OUTDOOR_VALOR:
+                jComboModalidade.setSelectedIndex(MODALIDADE_OUTDOOR_INDICE);
                 break;
-            case CATEGORIA_PROFISSIONAL_VALOR:
-                jComboBoxCategoria.setSelectedIndex(CATEGORIA_PROFISSIONAL_INDICE);
+            case MODALIDADE_INDOOR_VALOR:
+                jComboModalidade.setSelectedIndex(MODALIDADE_INDOOR_INDICE);
+                break;
+            case MODALIDADE_FIELD_VALOR:
+                jComboModalidade.setSelectedIndex(MODALIDADE_FIELD_INDICE);
+                break;
+            case MODALIDADE_SKIARCHERY_VALOR:
+                jComboModalidade.setSelectedIndex(MODALIDADE_SKIARCHERY_INDICE);
+                break;
+            case MODALIDADE_CLOUT_VALOR:
+                jComboModalidade.setSelectedIndex(MODALIDADE_CLOUT_INDICE);
+                break;
+            case MODALIDADE_FLIGHT_VALOR:
+                jComboModalidade.setSelectedIndex(MODALIDADE_FLIGHT_INDICE);
                 break;
         }
 
-        switch (umArqueiro.getEstilo()) {
-            case ESTILO_ORTODOXO_VALOR:
-                jComboBoxEstilo.setSelectedIndex(ESTILO_ORTODOXO_INDICE);
+        switch (umArqueiro.getTipoArco()) {
+            case TIPOARCO_TRADICIONAL_VALOR:
+                jComboTipoDeArco.setSelectedIndex(TIPOARCO_TRADICIONAL_INDICE);
                 break;
-            case ESTILO_SOUTHPAW_VALOR:
-                jComboBoxEstilo.setSelectedIndex(ESTILO_SOUTHPAW_INDICE);
+            case TIPOARCO_RECURVO_VALOR:
+                jComboTipoDeArco.setSelectedIndex(TIPOARCO_RECURVO_INDICE);
+                break;
+            case TIPOARCO_COMPOSTO_VALOR:
+                jComboTipoDeArco.setSelectedIndex(TIPOARCO_COMPOSTO_INDICE);
                 break;
         }
 
-        this.atualizarCategoriaPeso();
+        this.atualizarModalidade();
     }
 
     private boolean validarCampos() {
@@ -190,17 +216,17 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             }
         }
         try {
-            Double.parseDouble(jTextFieldEnvergadura.getText());
+            Double.parseDouble(jTextFieldDistancia.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Envergadura' é inválido.");
-            jTextFieldEnvergadura.requestFocus();
+            this.exibirInformacao("O valor do campo 'Distaancia' é inválido.");
+            jTextFieldDistancia.requestFocus();
             return false;
         }
         try {
-            Integer.parseInt(jTextFieldTotalDerrotas.getText());
+            Integer.parseInt(jTextFieldTotalDeMedalhas.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Derrotas' é inválido.");
-            jTextFieldTotalDerrotas.requestFocus();
+            this.exibirInformacao("O valor do campo 'Total de Medalhas' é inválido.");
+            jTextFieldTotalDeMedalhas.requestFocus();
             return false;
         }
         try {
@@ -211,31 +237,31 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             return false;
         }
         try {
-            Integer.parseInt(jTextFieldTotalEmpates.getText());
+            Integer.parseInt(jTextFieldAcertosNaMosca.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Empates' é inválido.");
-            jTextFieldTotalEmpates.requestFocus();
+            this.exibirInformacao("O valor do campo 'Acertos na Mosca' é inválido.");
+            jTextFieldAcertosNaMosca.requestFocus();
             return false;
         }
         try {
-            Integer.parseInt(jTextFieldTotalLutas.getText());
+            Integer.parseInt(jTextFieldTamanhoDoArco.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Lutas' é inválido.");
-            jTextFieldTotalLutas.requestFocus();
+            this.exibirInformacao("O valor do campo 'Tamanho do Arco' é inválido.");
+            jTextFieldTamanhoDoArco.requestFocus();
             return false;
         }
         try {
-            Integer.parseInt(jTextFieldTotalNocaute.getText());
+            Integer.parseInt(jTextFieldTotalDeVitorias.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Nocautes' é inválido.");
-            jTextFieldTotalNocaute.requestFocus();
+            this.exibirInformacao("O valor do campo 'Total de Vitorias' é inválido.");
+            jTextFieldTotalDeVitorias.requestFocus();
             return false;
         }
         try {
-            Integer.parseInt(jTextFieldTotalVitorias.getText());
+            Integer.parseInt(jTextFieldTipoDeFlecha.getText());
         } catch (Exception ex) {
-            this.exibirInformacao("O valor do campo 'Total de Vitórias' é inválido.");
-            jTextFieldTotalVitorias.requestFocus();
+            this.exibirInformacao("O valor do campo 'Tipo de Flecha' é inválido.");
+            jTextFieldTipoDeFlecha.requestFocus();
             return false;
         }
         return true;
@@ -245,13 +271,14 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         boolean registroSelecionado = (umArqueiro != null);
         jTextFieldAltura.setEnabled(modoAlteracao);
         jTextFieldBairro.setEnabled(modoAlteracao);
-        jTextFieldCategoriaPeso.setEnabled(false);
+        jTextFieldAlvo.setEnabled(false);
         jTextFieldCep.setEnabled(modoAlteracao);
         jTextFieldCidade.setEnabled(modoAlteracao);
         jTextFieldComplemento.setEnabled(modoAlteracao);
         jTextFieldCpf.setEnabled(modoAlteracao);
+        jTextIdade.setEnabled(modoAlteracao);
         jTextFieldDataNascimento.setEnabled(modoAlteracao);
-        jTextFieldEnvergadura.setEnabled(modoAlteracao);
+        jTextFieldDistancia.setEnabled(modoAlteracao);
         jComboBoxEstado.setEnabled(modoAlteracao);
         jTextFieldLogradouro.setEnabled(modoAlteracao);
         jTextFieldNome.setEnabled(modoAlteracao);
@@ -261,12 +288,12 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jTextFieldPais.setEnabled(modoAlteracao);
         jTextFieldPeso.setEnabled(modoAlteracao);
         jTextFieldRg.setEnabled(modoAlteracao);
-        jTextFieldTotalDerrotas.setEnabled(modoAlteracao);
+        jTextFieldTotalDeMedalhas.setEnabled(modoAlteracao);
         jTextFieldTotalDesistencias.setEnabled(modoAlteracao);
-        jTextFieldTotalEmpates.setEnabled(modoAlteracao);
-        jTextFieldTotalLutas.setEnabled(modoAlteracao);
-        jTextFieldTotalNocaute.setEnabled(modoAlteracao);
-        jTextFieldTotalVitorias.setEnabled(modoAlteracao);
+        jTextFieldAcertosNaMosca.setEnabled(modoAlteracao);
+        jTextFieldTamanhoDoArco.setEnabled(modoAlteracao);
+        jTextFieldTotalDeVitorias.setEnabled(modoAlteracao);
+        jTextFieldTipoDeFlecha.setEnabled(modoAlteracao);
         jButtonNovo.setEnabled(modoAlteracao == false);
         jButtonAlterar.setEnabled(modoAlteracao == false && registroSelecionado == true);
         jButtonExcluir.setEnabled(modoAlteracao == false && registroSelecionado == true);
@@ -278,9 +305,9 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jButtonAdicionarPremiacao.setEnabled(modoAlteracao);
         jButtonRemoverPremiacao.setEnabled(modoAlteracao);
         jComboBoxSexo.setEnabled(modoAlteracao);
-        jComboBoxCategoria.setEnabled(modoAlteracao);
-        jComboBoxEstilo.setEnabled(modoAlteracao);
-        jTableListaArqueiroes.setEnabled(modoAlteracao == false);
+        jComboModalidade.setEnabled(modoAlteracao);
+        jComboTipoDeArco.setEnabled(modoAlteracao);
+        jTableListaArqueiros.setEnabled(modoAlteracao == false);
     }
 
     private void salvarRegistro() {
@@ -341,9 +368,9 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         umArqueiro.setCpf(jTextFieldCpf.getText());
         umArqueiro.setRg(jTextFieldRg.getText());
         umArqueiro.setTotalDesistencias(Integer.parseInt(jTextFieldTotalDesistencias.getText()));
-        umArqueiro.setTotalMedalhas(Integer.parseInt(jTextFieldTotalEmpates.getText()));
-        umArqueiro.setTotalMedalhas(Integer.parseInt(jTextFieldTotalNocaute.getText()));
-        umArqueiro.setTotalVitorias(Integer.parseInt(jTextFieldTotalVitorias.getText()));
+        umArqueiro.setTotalMedalhas(Integer.parseInt(jTextFieldAcertosNaMosca.getText()));
+        umArqueiro.setTotalMedalhas(Integer.parseInt(jTextFieldTotalDeVitorias.getText()));
+        umArqueiro.setTotalVitorias(Integer.parseInt(jTextFieldTipoDeFlecha.getText()));
 
         switch (jComboBoxSexo.getSelectedIndex()) {
             case SEXO_MASCULINO_INDICE:
@@ -354,21 +381,36 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                 break;
         }
 
-        switch (jComboBoxCategoria.getSelectedIndex()) {
-            case CATEGORIA_AMADOR_INDICE:
-                umArqueiro.setCategoria(CATEGORIA_AMADOR_VALOR);
+        switch (jComboModalidade.getSelectedIndex()) {
+            case MODALIDADE_OUTDOOR_INDICE:
+                umArqueiro.setModalidade(MODALIDADE_OUTDOOR_VALOR);
                 break;
-            case CATEGORIA_PROFISSIONAL_INDICE:
-                umArqueiro.setCategoria(CATEGORIA_PROFISSIONAL_VALOR);
+            case MODALIDADE_INDOOR_INDICE:
+                umArqueiro.setModalidade(MODALIDADE_INDOOR_VALOR);
+                break;
+            case MODALIDADE_FIELD_INDICE:
+                umArqueiro.setModalidade(MODALIDADE_FIELD_VALOR);
+                break;
+            case MODALIDADE_SKIARCHERY_INDICE:
+                umArqueiro.setModalidade(MODALIDADE_SKIARCHERY_VALOR);
+                break;
+            case MODALIDADE_CLOUT_INDICE:
+                umArqueiro.setModalidade(MODALIDADE_CLOUT_VALOR);
+                break;
+            case MODALIDADE_FLIGHT_INDICE:
+                umArqueiro.setModalidade(MODALIDADE_FLIGHT_VALOR);
                 break;
         }
 
-        switch (jComboBoxEstilo.getSelectedIndex()) {
-            case ESTILO_ORTODOXO_INDICE:
-                umArqueiro.setEstilo(ESTILO_ORTODOXO_VALOR);
+        switch (jComboTipoDeArco.getSelectedIndex()) {
+            case TIPOARCO_TRADICIONAL_INDICE:
+                umArqueiro.setTipoArco(TIPOARCO_TRADICIONAL_VALOR);
                 break;
-            case ESTILO_SOUTHPAW_INDICE:
-                umArqueiro.setEstilo(ESTILO_SOUTHPAW_VALOR);
+            case TIPOARCO_RECURVO_INDICE:
+                umArqueiro.setTipoArco(TIPOARCO_RECURVO_VALOR);
+                break;
+            case TIPOARCO_COMPOSTO_INDICE:
+                umArqueiro.setTipoArco(TIPOARCO_COMPOSTO_VALOR);
                 break;
         }
 
@@ -377,18 +419,18 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         }
         modoAlteracao = false;
         novoRegistro = false;
-        this.carregarListaArqueiroes();
+        this.carregarListaArqueiros();
         this.habilitarDesabilitarCampos();
     }
 
-    private void carregarListaArqueiroes() {
-        ArrayList<Arqueiro> listaArqueiroes = controleArqueiro.getListaArqueiroes();
-        DefaultTableModel model = (DefaultTableModel) jTableListaArqueiroes.getModel();
+    private void carregarListaArqueiros() {
+        ArrayList<Arqueiro> listaArqueiros = controleArqueiro.getListaArqueiros();
+        DefaultTableModel model = (DefaultTableModel) jTableListaArqueiros.getModel();
         model.setRowCount(0);
-        for (Arqueiro b : listaArqueiroes) {
+        for (Arqueiro b : listaArqueiros) {
             model.addRow(new String[]{b.getNome(), b.getCpf()});
         }
-        jTableListaArqueiroes.setModel(model);
+        jTableListaArqueiros.setModel(model);
     }
 
     private void exibirInformacao(String info) {
@@ -397,17 +439,29 @@ public class CadastroArqueiro extends javax.swing.JFrame {
 
     private void atualizarModalidade() {
         char modalidade;
-        switch (jComboBoxmodalidade.getSelectedIndex()) {
-            case CATEGORIA_AMADOR_INDICE:
-                modalidade = CATEGORIA_AMADOR_VALOR;
+        switch (jComboModalidade.getSelectedIndex()) {
+            case MODALIDADE_OUTDOOR_INDICE:
+                modalidade = MODALIDADE_OUTDOOR_VALOR;
                 break;
-            case CATEGORIA_PROFISSIONAL_INDICE:
-                modalidade = CATEGORIA_PROFISSIONAL_VALOR;
+            case MODALIDADE_INDOOR_INDICE:
+                modalidade = MODALIDADE_INDOOR_VALOR;
+                break;
+            case MODALIDADE_FIELD_INDICE:
+                modalidade = MODALIDADE_FIELD_VALOR;
+                break;
+            case MODALIDADE_SKIARCHERY_INDICE:
+                modalidade = MODALIDADE_SKIARCHERY_VALOR;
+                break;
+            case MODALIDADE_CLOUT_INDICE:
+                modalidade = MODALIDADE_CLOUT_VALOR;
+                break;
+            case MODALIDADE_FLIGHT_INDICE:
+                modalidade = MODALIDADE_FLIGHT_VALOR;
                 break;
             default:
                 return;
         }
-        jTextFieldCategoriaPeso.setText(Arqueiro.obterCategoriaPorIdadeEsexo(categoria, Double.parseDouble(jTextFieldPeso.getText())));
+       // jTextFieldAlvo.setText(Arqueiro.obterCategoriaPorIdadeEsexo(idade, Double.parseDouble(jTextFieldIdade.getText())));
     }
 
     @SuppressWarnings("unchecked")
@@ -442,6 +496,8 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jTextFieldDataNascimento = new javax.swing.JTextField();
         jTextFieldRg = new javax.swing.JTextField();
         jTextFieldCpf = new javax.swing.JTextField();
+        jTextIdade = new javax.swing.JTextField();
+        jLabelIdade = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabelLogradouro = new javax.swing.JLabel();
         jTextFieldLogradouro = new javax.swing.JTextField();
@@ -461,25 +517,25 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jTextFieldCep = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabelModalidade = new javax.swing.JLabel();
-        jComboBoxCategoria = new javax.swing.JComboBox();
-        jLabelCategoriaPeso = new javax.swing.JLabel();
-        jLabelEstilo = new javax.swing.JLabel();
-        jComboBoxEstilo = new javax.swing.JComboBox();
-        jTextFieldEnvergadura = new javax.swing.JTextField();
-        jLabelEnvergadura = new javax.swing.JLabel();
-        jLabelTotalLutas = new javax.swing.JLabel();
-        jTextFieldTotalLutas = new javax.swing.JTextField();
-        jTextFieldTotalVitorias = new javax.swing.JTextField();
+        jComboModalidade = new javax.swing.JComboBox();
+        jLabelAlvo = new javax.swing.JLabel();
+        jLabelTipoDeArco = new javax.swing.JLabel();
+        jComboTipoDeArco = new javax.swing.JComboBox();
+        jTextFieldDistancia = new javax.swing.JTextField();
+        jLabelDistancia = new javax.swing.JLabel();
+        jLabelTamanhoDoArco = new javax.swing.JLabel();
+        jTextFieldTamanhoDoArco = new javax.swing.JTextField();
+        jTextFieldTipoDeFlecha = new javax.swing.JTextField();
+        jLabelTipoDeFlecha = new javax.swing.JLabel();
+        jTextFieldTotalDeVitorias = new javax.swing.JTextField();
         jLabelTotalVitorias = new javax.swing.JLabel();
-        jTextFieldTotalNocaute = new javax.swing.JTextField();
-        jLabelTotalVitoriasNocaute = new javax.swing.JLabel();
-        jTextFieldTotalEmpates = new javax.swing.JTextField();
-        jLabelTotalEmpates = new javax.swing.JLabel();
-        jLabelTotalDerrotas = new javax.swing.JLabel();
-        jTextFieldTotalDerrotas = new javax.swing.JTextField();
+        jTextFieldAcertosNaMosca = new javax.swing.JTextField();
+        jLabelAcertosNaMosca = new javax.swing.JLabel();
+        jLabelTotalDeMedalhas = new javax.swing.JLabel();
+        jTextFieldTotalDeMedalhas = new javax.swing.JTextField();
         jLabelTotalDesistencias = new javax.swing.JLabel();
         jTextFieldTotalDesistencias = new javax.swing.JTextField();
-        jTextFieldCategoriaPeso = new javax.swing.JTextField();
+        jTextFieldAlvo = new javax.swing.JTextField();
         jLabelPremiacoes = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListPremiacoes = new javax.swing.JList();
@@ -490,9 +546,9 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jButtonExcluir = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
         jButtonPesquisar = new javax.swing.JButton();
-        jLabelListaBoxeadores = new javax.swing.JLabel();
+        jLabelListaArqueiros = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTableListaBoxeadores = new javax.swing.JTable();
+        jTableListaArqueiros = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -577,21 +633,31 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             }
         });
 
+        jTextIdade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextIdadeActionPerformed(evt);
+            }
+        });
+
+        jLabelIdade.setText("Idade:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelTelefones, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelRg, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNomePai, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNomeMae, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelSexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabelTelefones, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelRg, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNomePai, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNomeMae, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelSexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelIdade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
@@ -606,8 +672,13 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextIdade)
+                                .addGap(432, 432, 432)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAdicionarTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonRemoverTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -661,15 +732,20 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCpf)
                     .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTelefones)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonAdicionarTelefone)
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAdicionarTelefone)
+                            .addComponent(jTextIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRemoverTelefone))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(94, 94, 94))
+                        .addComponent(jLabelIdade)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonRemoverTelefone)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTelefones)))
         );
 
         jTabbedPane1.addTab("Informações Gerais", jPanel1);
@@ -699,7 +775,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                     .addComponent(jLabelPais, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                     .addComponent(jLabelCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                     .addComponent(jLabelBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
@@ -711,7 +787,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+                    .addComponent(jTextFieldComplemento, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
                     .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
                     .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -765,34 +841,39 @@ public class CadastroArqueiro extends javax.swing.JFrame {
 
         jLabelModalidade.setText("Modalidade:");
 
-        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Amador", "Profissional" }));
-        jComboBoxCategoria.addActionListener(new java.awt.event.ActionListener() {
+        jComboModalidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Amador", "Profissional" }));
+        jComboModalidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxCategoriaActionPerformed(evt);
+                jComboModalidadeActionPerformed(evt);
             }
         });
 
-        jLabelCategoriaPeso.setText("Categoria (Peso):");
+        jLabelAlvo.setText("Alvo:");
 
-        jLabelEstilo.setText("Estilo:");
+        jLabelTipoDeArco.setText("Tipo de Arco:");
 
-        jComboBoxEstilo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ortodoxo (destro)", "Southpaw (canhoto)" }));
+        jComboTipoDeArco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ortodoxo (destro)", "Southpaw (canhoto)" }));
+        jComboTipoDeArco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboTipoDeArcoActionPerformed(evt);
+            }
+        });
 
-        jLabelEnvergadura.setText("Envergadura:");
+        jLabelDistancia.setText("Distancia:");
 
-        jLabelTotalLutas.setText("Total de Lutas:");
+        jLabelTamanhoDoArco.setText("Tamanho do Arco:");
 
-        jLabelTotalVitorias.setText("Total de Vitórias:");
+        jLabelTipoDeFlecha.setText("Tipo de Flecha:");
 
-        jLabelTotalVitoriasNocaute.setText("Total de Vitórias por Nocaute:");
+        jLabelTotalVitorias.setText("Total de Vitorias:");
 
-        jLabelTotalEmpates.setText("Total de Empates:");
+        jLabelAcertosNaMosca.setText("Total de Acertos na Mosca:");
 
-        jLabelTotalDerrotas.setText("Total de Derrotas:");
+        jLabelTotalDeMedalhas.setText("Total de Medalhas:");
 
         jLabelTotalDesistencias.setText("Total de Desistencias:");
 
-        jTextFieldCategoriaPeso.setEnabled(false);
+        jTextFieldAlvo.setEnabled(false);
 
         jLabelPremiacoes.setText("Premiações:");
 
@@ -819,28 +900,28 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelEnvergadura)
+                    .addComponent(jLabelDistancia)
                     .addComponent(jLabelModalidade)
-                    .addComponent(jLabelCategoriaPeso)
-                    .addComponent(jLabelEstilo)
-                    .addComponent(jLabelTotalLutas)
+                    .addComponent(jLabelAlvo)
+                    .addComponent(jLabelTipoDeArco)
+                    .addComponent(jLabelTamanhoDoArco)
+                    .addComponent(jLabelTipoDeFlecha)
                     .addComponent(jLabelTotalVitorias)
-                    .addComponent(jLabelTotalVitoriasNocaute)
-                    .addComponent(jLabelTotalEmpates)
-                    .addComponent(jLabelTotalDerrotas)
+                    .addComponent(jLabelAcertosNaMosca)
+                    .addComponent(jLabelTotalDeMedalhas)
                     .addComponent(jLabelTotalDesistencias))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldTotalDesistencias, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTotalDerrotas, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTotalEmpates, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTotalNocaute, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTotalVitorias, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTotalLutas, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                    .addComponent(jTextFieldEnvergadura, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                    .addComponent(jComboBoxEstilo, 0, 205, Short.MAX_VALUE)
-                    .addComponent(jTextFieldCategoriaPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-                    .addComponent(jComboBoxCategoria, 0, 205, Short.MAX_VALUE))
+                    .addComponent(jTextFieldTotalDesistencias, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTotalDeMedalhas, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(jTextFieldAcertosNaMosca, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTotalDeVitorias, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTipoDeFlecha, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTamanhoDoArco, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(jTextFieldDistancia, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(jComboTipoDeArco, 0, 243, Short.MAX_VALUE)
+                    .addComponent(jTextFieldAlvo, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                    .addComponent(jComboModalidade, 0, 243, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelPremiacoes)
@@ -859,41 +940,41 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboModalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelModalidade)
-                            .addComponent(jLabelPremiacoes))
+                            .addComponent(jLabelPremiacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCategoriaPeso)
-                            .addComponent(jTextFieldCategoriaPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelAlvo)
+                            .addComponent(jTextFieldAlvo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEstilo))
+                            .addComponent(jComboTipoDeArco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelTipoDeArco))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelEnvergadura)
-                            .addComponent(jTextFieldEnvergadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelDistancia)
+                            .addComponent(jTextFieldDistancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTotalLutas)
-                            .addComponent(jTextFieldTotalLutas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelTamanhoDoArco)
+                            .addComponent(jTextFieldTamanhoDoArco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelTipoDeFlecha)
+                            .addComponent(jTextFieldTipoDeFlecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTotalVitorias)
-                            .addComponent(jTextFieldTotalVitorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldTotalDeVitorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTotalVitoriasNocaute)
-                            .addComponent(jTextFieldTotalNocaute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelAcertosNaMosca)
+                            .addComponent(jTextFieldAcertosNaMosca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTotalEmpates)
-                            .addComponent(jTextFieldTotalEmpates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTotalDerrotas)
-                            .addComponent(jTextFieldTotalDerrotas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelTotalDeMedalhas)
+                            .addComponent(jTextFieldTotalDeMedalhas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelTotalDesistencias)
@@ -946,9 +1027,9 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             }
         });
 
-        jLabelListaBoxeadores.setText("Lista de Arqueiros:");
+        jLabelListaArqueiros.setText("Lista de Arqueiros:");
 
-        jTableListaBoxeadores.setModel(new javax.swing.table.DefaultTableModel 
+        jTableListaArqueiros.setModel(new javax.swing.table.DefaultTableModel 
             (
                 null,
                 new String [] {
@@ -961,12 +1042,12 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                     return false;
                 }
             });
-            jTableListaBoxeadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            jTableListaArqueiros.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jTableListaBoxeadoresMouseClicked(evt);
+                    jTableListaArqueirosMouseClicked(evt);
                 }
             });
-            jScrollPane4.setViewportView(jTableListaBoxeadores);
+            jScrollPane4.setViewportView(jTableListaArqueiros);
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -977,7 +1058,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelListaBoxeadores)
+                                .addComponent(jLabelListaArqueiros)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jButtonNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -991,7 +1072,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jButtonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
 
@@ -1009,7 +1090,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                         .addComponent(jButtonSalvar)
                         .addComponent(jButtonCancelar))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabelListaBoxeadores)
+                    .addComponent(jLabelListaArqueiros)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1020,9 +1101,9 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             pack();
         }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriaActionPerformed
+    private void jComboModalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboModalidadeActionPerformed
         this.atualizarModalidade();
-    }//GEN-LAST:event_jComboBoxCategoriaActionPerformed
+    }//GEN-LAST:event_jComboModalidadeActionPerformed
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
         umArqueiro = null;
@@ -1055,7 +1136,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPesoPropertyChange
 
     private void jTextFieldPesoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPesoFocusLost
-        this.atualizarCategoriaPeso();
+        this.atualizarModalidade();
     }//GEN-LAST:event_jTextFieldPesoFocusLost
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
@@ -1069,7 +1150,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         this.controleArqueiro.remover(umArqueiro);
         umArqueiro = null;
         this.limparCampos();
-        this.carregarListaArqueiroes();
+        this.carregarListaArqueiros();
         this.habilitarDesabilitarCampos();
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -1122,17 +1203,25 @@ private void jButtonRemoverPremiacaoActionPerformed(java.awt.event.ActionEvent e
     }
 }//GEN-LAST:event_jButtonRemoverPremiacaoActionPerformed
 
-private void jTableListaBoxeadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaBoxeadoresMouseClicked
-    if (jTableListaArqueiroes.isEnabled()) {
-        DefaultTableModel model = (DefaultTableModel) jTableListaArqueiroes.getModel();
-        String nome = (String) model.getValueAt(jTableListaArqueiroes.getSelectedRow(), 0);
+private void jTableListaArqueirosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaArqueirosMouseClicked
+    if (jTableListaArqueiros.isEnabled()) {
+        DefaultTableModel model = (DefaultTableModel) jTableListaArqueiros.getModel();
+        String nome = (String) model.getValueAt(jTableListaArqueiros.getSelectedRow(), 0);
         this.pesquisarArqueiro(nome);
     }
-}//GEN-LAST:event_jTableListaBoxeadoresMouseClicked
+}//GEN-LAST:event_jTableListaArqueirosMouseClicked
 
 private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataNascimentoActionPerformed
 // TODO add your handling code here:
 }//GEN-LAST:event_jTextFieldDataNascimentoActionPerformed
+
+    private void jTextIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextIdadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextIdadeActionPerformed
+
+    private void jComboTipoDeArcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboTipoDeArcoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboTipoDeArcoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionarPremiacao;
@@ -1145,22 +1234,23 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private javax.swing.JButton jButtonRemoverPremiacao;
     private javax.swing.JButton jButtonRemoverTelefone;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JComboBox jComboBoxCategoria;
     private javax.swing.JComboBox jComboBoxEstado;
-    private javax.swing.JComboBox jComboBoxEstilo;
     private javax.swing.JComboBox jComboBoxSexo;
+    private javax.swing.JComboBox jComboModalidade;
+    private javax.swing.JComboBox jComboTipoDeArco;
+    private javax.swing.JLabel jLabelAcertosNaMosca;
     private javax.swing.JLabel jLabelAltura;
+    private javax.swing.JLabel jLabelAlvo;
     private javax.swing.JLabel jLabelBairro;
-    private javax.swing.JLabel jLabelCategoriaPeso;
     private javax.swing.JLabel jLabelCep;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelComplemento;
     private javax.swing.JLabel jLabelCpf;
     private javax.swing.JLabel jLabelDataNascimento;
-    private javax.swing.JLabel jLabelEnvergadura;
+    private javax.swing.JLabel jLabelDistancia;
     private javax.swing.JLabel jLabelEstado;
-    private javax.swing.JLabel jLabelEstilo;
-    private javax.swing.JLabel jLabelListaBoxeadores;
+    private javax.swing.JLabel jLabelIdade;
+    private javax.swing.JLabel jLabelListaArqueiros;
     private javax.swing.JLabel jLabelLogradouro;
     private javax.swing.JLabel jLabelModalidade;
     private javax.swing.JLabel jLabelNome;
@@ -1172,13 +1262,13 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private javax.swing.JLabel jLabelPremiacoes;
     private javax.swing.JLabel jLabelRg;
     private javax.swing.JLabel jLabelSexo;
+    private javax.swing.JLabel jLabelTamanhoDoArco;
     private javax.swing.JLabel jLabelTelefones;
-    private javax.swing.JLabel jLabelTotalDerrotas;
+    private javax.swing.JLabel jLabelTipoDeArco;
+    private javax.swing.JLabel jLabelTipoDeFlecha;
+    private javax.swing.JLabel jLabelTotalDeMedalhas;
     private javax.swing.JLabel jLabelTotalDesistencias;
-    private javax.swing.JLabel jLabelTotalEmpates;
-    private javax.swing.JLabel jLabelTotalLutas;
     private javax.swing.JLabel jLabelTotalVitorias;
-    private javax.swing.JLabel jLabelTotalVitoriasNocaute;
     private javax.swing.JList jListPremiacoes;
     private javax.swing.JList jListTelefones;
     private javax.swing.JPanel jPanel1;
@@ -1190,16 +1280,17 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTableListaBoxeadores;
+    private javax.swing.JTable jTableListaArqueiros;
+    private javax.swing.JTextField jTextFieldAcertosNaMosca;
     private javax.swing.JTextField jTextFieldAltura;
+    private javax.swing.JTextField jTextFieldAlvo;
     private javax.swing.JTextField jTextFieldBairro;
-    private javax.swing.JTextField jTextFieldCategoriaPeso;
     private javax.swing.JTextField jTextFieldCep;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldComplemento;
     private javax.swing.JTextField jTextFieldCpf;
     private javax.swing.JTextField jTextFieldDataNascimento;
-    private javax.swing.JTextField jTextFieldEnvergadura;
+    private javax.swing.JTextField jTextFieldDistancia;
     private javax.swing.JTextField jTextFieldLogradouro;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNomeMae;
@@ -1208,11 +1299,11 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private javax.swing.JTextField jTextFieldPais;
     private javax.swing.JTextField jTextFieldPeso;
     private javax.swing.JTextField jTextFieldRg;
-    private javax.swing.JTextField jTextFieldTotalDerrotas;
+    private javax.swing.JTextField jTextFieldTamanhoDoArco;
+    private javax.swing.JTextField jTextFieldTipoDeFlecha;
+    private javax.swing.JTextField jTextFieldTotalDeMedalhas;
+    private javax.swing.JTextField jTextFieldTotalDeVitorias;
     private javax.swing.JTextField jTextFieldTotalDesistencias;
-    private javax.swing.JTextField jTextFieldTotalEmpates;
-    private javax.swing.JTextField jTextFieldTotalLutas;
-    private javax.swing.JTextField jTextFieldTotalNocaute;
-    private javax.swing.JTextField jTextFieldTotalVitorias;
+    private javax.swing.JTextField jTextIdade;
     // End of variables declaration//GEN-END:variables
 }

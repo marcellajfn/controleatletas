@@ -24,8 +24,14 @@ public class ControleArqueiro {
     
     public Arqueiro pesquisar(String nome) {
         for (Arqueiro b: listaArqueiros) {
-            if (b.getNome().equalsIgnoreCase(nome)) return b;
+            if (b.getNome().equalsIgnoreCase(nome)) {
+                return b;
+            }
         }
         return null;
+    }
+
+    ArrayList<Arqueiro> getListaArqueiros() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

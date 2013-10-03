@@ -152,6 +152,14 @@ public class Arqueiro extends Atleta {
         }
         
     }
+
+    void setModalidade(byte MODALIDADE_OUTDOOR_VALOR) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void setTipoArco(byte TIPOARCO_RECURVO_VALOR) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
