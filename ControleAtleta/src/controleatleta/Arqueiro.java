@@ -8,7 +8,7 @@ public class Arqueiro extends Atleta {
     private String alvo;
     private Double tamanhoArco;	
     private int distancia; //Masculino: 90, 70, 50 e  30 metros; Feminino: 70, 60, 50,30 metros.
-    private String tipoFlecha;  //(M) Madeira, (A) Alumínio, (C)  Carbono
+    private String tipoFlecha;  // Madeira,  Alumínio,  Carbono
     private char tipoArco;// (T) Arco tradicional,  (R) Arco recurvo (olímpico), (C) Arco composto.
     private char modalidade;// (O) Outdoor,(I) Indoor, (F) Field, (S) Ski-archery (esqui), (C) Clout, (E) Flight.
     private ArrayList<Premiacao> premiacoes;
@@ -105,7 +105,7 @@ public class Arqueiro extends Atleta {
         return obterCategoriaPorIdadeEsexo(this.getSexo(), this.getIdade());
     }
 
-   public static String obterCategoriaPorIdadeEsexo(char sexo, Double idade) {
+   public static String obterCategoriaPorIdadeEsexo(char sexo, int idade) {
         if (sexo == 'F') {
             return obterCategoriaPorIdadeEsexoFeminino(idade);
         } else if (sexo == 'M') {
@@ -115,7 +115,7 @@ public class Arqueiro extends Atleta {
         }
     }
 
-    private static String obterCategoriaPorIdadeEsexoFeminino(Double idade) {
+    private static String obterCategoriaPorIdadeEsexoFeminino(int idade) {
         if (idade <= 16) {
             return "Cadete Feminino";
         } else if (idade <= 18) {
@@ -127,7 +127,7 @@ public class Arqueiro extends Atleta {
         }
     }
 
-    private static String obterCategoriaPorIdadeEsexoMasculino(Double idade) {
+    private static String obterCategoriaPorIdadeEsexoMasculino(int idade) {
         if (idade <= 16) {
             return "Cadete Masculino";
         } else if (idade <= 18) {

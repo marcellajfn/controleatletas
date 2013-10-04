@@ -63,7 +63,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jTextFieldComplemento.setText(null);
         jTextFieldCpf.setText(null);
         jTextFieldDataNascimento.setText(null);
-        jTextFieldDistancia.setText("0.0");
+        jTextFieldDistancia.setText("0");
         jComboBoxEstado.setSelectedIndex(0);
         jTextFieldLogradouro.setText(null);
         jTextFieldNome.setText(null);
@@ -77,7 +77,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jTextFieldTotalDeMedalhas.setText("0");
         jTextFieldTotalDesistencias.setText("0");
         jTextFieldAcertosNaMosca.setText("0");
-        jTextFieldTamanhoDoArco.setText("0");
+        jTextFieldTamanhoDoArco.setText("0.0");
         jTextFieldTipoDeFlecha.setText(null);
         telefonesListModel.clear();
         premiacaoListModel.clear();
@@ -296,7 +296,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         jTextFieldTotalDesistencias.setEnabled(modoAlteracao);
         jTextFieldAcertosNaMosca.setEnabled(modoAlteracao);
         jTextFieldTamanhoDoArco.setEnabled(modoAlteracao);
-        jTextFieldTipoCompetidor.setEnabled(modoAlteracao);
+        jTextFieldTipoCompetidor.setEnabled(false);
         jTextFieldTipoDeFlecha.setEnabled(modoAlteracao);
         jButtonNovo.setEnabled(modoAlteracao == false);
         jButtonAlterar.setEnabled(modoAlteracao == false && registroSelecionado == true);
@@ -452,7 +452,10 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             default:
                 return;
         }
-       jTextFieldTipoCompetidor.setText(Arqueiro.obterCategoriaPorIdadeEsexo(sexo, Double.parseDouble(jTextIdade.getText())));
+     if (Integer.parseInt( jTextIdade.getText())!=0)
+        {
+        jTextFieldTipoCompetidor.setText(Arqueiro.obterCategoriaPorIdadeEsexo(sexo, Integer.parseInt(jTextIdade.getText())));
+     }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -859,6 +862,8 @@ public class CadastroArqueiro extends javax.swing.JFrame {
 
         jLabelTipoDeFlecha.setText("Tipo de Flecha:");
 
+        jTextFieldTipoCompetidor.setForeground(new java.awt.Color(9, 4, 4));
+        jTextFieldTipoCompetidor.setDisabledTextColor(new java.awt.Color(11, 8, 5));
         jTextFieldTipoCompetidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldTipoCompetidorActionPerformed(evt);
@@ -1093,7 +1098,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
                     .addComponent(jLabelListaArqueiros)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
