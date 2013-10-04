@@ -5,14 +5,13 @@ import java.util.ArrayList;
 public class Arqueiro extends Atleta {
 
     
-    private char alvo;
+    private String alvo;
     private Double tamanhoArco;	
     private int distancia; //Masculino: 90, 70, 50 e  30 metros; Feminino: 70, 60, 50,30 metros.
-    private char tipoFlecha;  //(M) Madeira, (A) Alumínio, (C)  Carbono
+    private String tipoFlecha;  //(M) Madeira, (A) Alumínio, (C)  Carbono
     private char tipoArco;// (T) Arco tradicional,  (R) Arco recurvo (olímpico), (C) Arco composto.
     private char modalidade;// (O) Outdoor,(I) Indoor, (F) Field, (S) Ski-archery (esqui), (C) Clout, (E) Flight.
     private ArrayList<Premiacao> premiacoes;
-    private int totalVitorias;
     private int totalAcertosNaMosca;
     private int totalDesistencias;
     private int totalMedalhas;
@@ -21,11 +20,11 @@ public class Arqueiro extends Atleta {
    super(nome);   
    }
 
-    public char getAlvo() {
+    public String getAlvo() {
         return alvo;
     }
 
-    public void setAlvo(char alvo) {
+    public void setAlvo(String alvo) {
         this.alvo = alvo;
     }
 
@@ -69,11 +68,11 @@ public class Arqueiro extends Atleta {
         this.tipoArco = tipoArco;
     }
 
-    public char getTipoFlecha() {
+    public String getTipoFlecha() {
         return tipoFlecha;
     }
 
-    public void setTipoFlecha(char tipoFlecha) {
+    public void setTipoFlecha(String tipoFlecha) {
         this.tipoFlecha = tipoFlecha;
     }
 
@@ -101,20 +100,12 @@ public class Arqueiro extends Atleta {
         this.totalMedalhas = totalMedalhas;
     }
 
-    public int getTotalVitorias() {
-        return totalVitorias;
-    }
-
-    public void setTotalVitorias(int totalVitorias) {
-        this.totalVitorias = totalVitorias;
-    }
-          
 
     public String obterCategoriaPorIdadeEsexo() {
         return obterCategoriaPorIdadeEsexo(this.getSexo(), this.getIdade());
     }
 
-   public static String obterCategoriaPorIdadeEsexo(char sexo, int idade) {
+   public static String obterCategoriaPorIdadeEsexo(char sexo, Double idade) {
         if (sexo == 'F') {
             return obterCategoriaPorIdadeEsexoFeminino(idade);
         } else if (sexo == 'M') {
@@ -124,42 +115,30 @@ public class Arqueiro extends Atleta {
         }
     }
 
-    private static String obterCategoriaPorIdadeEsexoFeminino(int idade) {
+    private static String obterCategoriaPorIdadeEsexoFeminino(Double idade) {
         if (idade <= 16) {
             return "Cadete Feminino";
         } else if (idade <= 18) {
             return "Juvenil Feminino";
-        } else if (idade >= 19) {
+        } else if (idade >= 19 && idade <=50) {
             return "Adulto Feminino";
-        } else if (idade >= 50) {
-            return "Master Feminino";
         } else {
-            return "Invalido";
+            return "Master Feminino";
         }
     }
 
-    private static String obterCategoriaPorIdadeEsexoMasculino(int idade) {
+    private static String obterCategoriaPorIdadeEsexoMasculino(Double idade) {
         if (idade <= 16) {
             return "Cadete Masculino";
         } else if (idade <= 18) {
             return "Juvenil Masculino";
-        } else if (idade >= 19) {
+        } else if (idade >= 19 && idade <=50) {
             return "Adulto Masculino";
-        } else if (idade >= 50) {
+        }   
+         else {
             return "Master Masculino";
-        } else {
-            return "Invalido";
-        }
-        
+        } 
     }
 
-    void setModalidade(byte MODALIDADE_OUTDOOR_VALOR) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void setTipoArco(byte TIPOARCO_RECURVO_VALOR) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 }

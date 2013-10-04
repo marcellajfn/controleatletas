@@ -10,7 +10,7 @@ public class ControleArqueiro {
         this.listaArqueiros = new ArrayList<Arqueiro>();
     }
     
-    public ArrayList<Arqueiro> getListaArqueiroes() {
+    public ArrayList<Arqueiro> getListaArqueiros() {
         return listaArqueiros;
     }
     
@@ -31,7 +31,4 @@ public class ControleArqueiro {
         return null;
     }
 
-    ArrayList<Arqueiro> getListaArqueiros() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

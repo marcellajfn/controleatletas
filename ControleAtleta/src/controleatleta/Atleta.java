@@ -8,7 +8,7 @@ public class Atleta {
     ArrayList <String> telefones;
     private String nome;
     private Date dataNascimento;
-    private int idade;
+    private Double idade;
     private Endereco endereco;
     private Double altura;
     private Double peso;
@@ -47,11 +47,11 @@ public class Atleta {
         this.dataNascimento = dataNascimento;
     }
 
-    public int getIdade() {
+    public Double getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(Double idade) {
         this.idade = idade;
     }
     
