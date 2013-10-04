@@ -245,7 +245,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
             return false;
         }
         try {
-            Integer.parseInt(jTextFieldTamanhoDoArco.getText());
+            Double.parseDouble(jTextFieldTamanhoDoArco.getText());
         } catch (Exception ex) {
             this.exibirInformacao("O valor do campo 'Tamanho do Arco' é inválido.");
             jTextFieldTamanhoDoArco.requestFocus();
@@ -366,11 +366,16 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         umArqueiro.setPremiacoes(premiacoes);
         umArqueiro.setDataNascimento(dataNascimento);
         umArqueiro.setAltura(Double.parseDouble(jTextFieldAltura.getText()));
+        umArqueiro.setAlvo(jTextFieldAlvo.getText());
         umArqueiro.setNomeMae(jTextFieldNomeMae.getText());
         umArqueiro.setNomePai(jTextFieldNomePai.getText());
         umArqueiro.setPeso(Double.parseDouble(jTextFieldPeso.getText()));
         umArqueiro.setCpf(jTextFieldCpf.getText());
         umArqueiro.setRg(jTextFieldRg.getText());
+        umArqueiro.setDistancia(Integer.parseInt(jTextFieldDistancia.getText()));
+        umArqueiro.setIdade(Integer.parseInt(jTextIdade.getText()));
+        umArqueiro.setTotalMedalhas(Integer.parseInt(jTextFieldTotalDeMedalhas.getText()));
+        umArqueiro.setTamanhoArco(Double.parseDouble(jTextFieldTamanhoDoArco.getText()));
         umArqueiro.setTotalDesistencias(Integer.parseInt(jTextFieldTotalDesistencias.getText()));
         umArqueiro.setTotalAcertosNaMosca(Integer.parseInt(jTextFieldAcertosNaMosca.getText()));
         umArqueiro.setTipoFlecha(jTextFieldTipoDeFlecha.getText());
@@ -1107,7 +1112,7 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void jComboModalidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboModalidadeActionPerformed
-       this.atualizarTipoCompetidor();
+       
     }//GEN-LAST:event_jComboModalidadeActionPerformed
 
     private void jComboIdadeActionPerformed(java.awt.event.ActionEvent evt) {                                                 
