@@ -624,6 +624,11 @@ public class CadastroArqueiro extends javax.swing.JFrame {
         });
 
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Masculino", "Feminino" }));
+        jComboBoxSexo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxSexoFocusLost(evt);
+            }
+        });
 
         jTextFieldDataNascimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1248,6 +1253,10 @@ private void jTextFieldDataNascimentoActionPerformed(java.awt.event.ActionEvent 
     private void jTextIdadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextIdadeFocusLost
         this.atualizarTipoCompetidor();        // TODO add your handling code here:
     }//GEN-LAST:event_jTextIdadeFocusLost
+
+    private void jComboBoxSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxSexoFocusLost
+         this.atualizarTipoCompetidor(); // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxSexoFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdicionarPremiacao;
